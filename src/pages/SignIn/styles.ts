@@ -67,7 +67,7 @@ export const Content = styled.div`
 
     a {
       margin-top: 1.5rem;
-      color: #401067;
+      color: #6e7fab;
       font-weight: bold;
 
       transition: filter 0.2s;
