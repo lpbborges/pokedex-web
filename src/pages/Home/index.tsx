@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useEffect, useState } from 'react';
 
 import { PokemonList } from '../../components/PokemonList';
@@ -7,24 +8,34 @@ import { api } from '../../services/api';
 import { Container } from './styles';
 
 export function Home() {
+  const NUMBER_OF_POKEMONS_PER_PAGE = 8;
+  const [hasNext, setHasNext] = useState(true);
   const [pokemons, setPokemons] = useState<IPokemon[]>([]);
   const [search, setSearch] = useState('');
-  const [limit, setLimit] = useState(20);
+  const [count, setCount] = useState(0);
+  const [offsetApiParam, setOffsetApiParam] = useState(NUMBER_OF_POKEMONS_PER_PAGE);
 
   useEffect(() => {
     const isSearch = search.length > 2;
 
     async function loadPokemons() {
-      const { data } = await api.get('pokemon');
+      const { data } = await api.get('pokemon', {
+        params: {
+          limit: NUMBER_OF_POKEMONS_PER_PAGE,
+        }
+      });
 
-      setPokemons(data.results);
-      setLimit(data.count);
+      const { next, count, results } = data;
+
+      setPokemons(results);
+      setCount(count);
+      setHasNext(next !== null);
     }
 
     async function handleSearch() {
       const { data } = await api.get('pokemon', {
         params: {
-          limit,
+          limit: count,
         }
       })
 
@@ -38,7 +49,22 @@ export function Home() {
 
     if (isSearch) handleSearch();
     else loadPokemons();
-  }, [limit, search]);
+  }, [count, search]);
+
+  const handleFetchMorePokemon = useCallback(
+    async (offset: number) => {
+      const { data } = await api.get('pokemon', {
+        params: {
+          limit: NUMBER_OF_POKEMONS_PER_PAGE,
+          offset,
+        }
+      });
+
+      setPokemons(state => [...state, ...data.results]);
+      setOffsetApiParam(state => state + NUMBER_OF_POKEMONS_PER_PAGE);
+    },
+    []
+  );
 
   return (
     <Container>
@@ -47,6 +73,14 @@ export function Home() {
         onChange={event => setSearch(event.target.value)}
       />
       <PokemonList pokemons={pokemons} />
+      {search.length <= 2 && hasNext && (
+        <button
+          type="button"
+          onClick={() => handleFetchMorePokemon(offsetApiParam)}
+        >
+          Carregar mais
+        </button>
+      )}
     </Container>
   )
 }

@@ -50,7 +50,7 @@ export const Content = styled.div`
       padding: 0 1.5rem;
       height: 3.5rem;
       background: var(--orange-400);
-      color: #FFF;
+      color: var(--white);
       border-radius: 0.25rem;
       border: 0;
       font-size: 1rem;
