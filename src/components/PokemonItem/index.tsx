@@ -5,11 +5,11 @@ import { api } from '../../services/api';
 import { capitalize } from '../../utils/capitalize';
 import { Container } from './styles';
 
-type PokemonItemProps = {
+type IPokemonItemProps = {
   name: string;
 }
 
-export function PokemonItem({ name }: PokemonItemProps) {
+export function PokemonItem({ name }: IPokemonItemProps) {
   const [pokemon, setPokemon] = useState({} as IPokemon);
 
   useEffect(() => {
