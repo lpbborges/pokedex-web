@@ -33,7 +33,7 @@ export function SignIn() {
   return (
     <Container>
       <Content>
-        <img src={logoImg} />
+        <img src={logoImg} alt="Pokémon" />
         <form onSubmit={handleSignIn}>
           <input
             placeholder="Nome de usuário"

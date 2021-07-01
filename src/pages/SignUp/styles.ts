@@ -12,14 +12,9 @@ export const Container = styled.div`
 export const Content = styled.div`
   background: var(--white);
   max-width: 1120px;
+  width: 435px;
   padding: 3rem 2.5rem;
-  border-radius: 0.25rem;
-
-  img {
-    margin-top: -132px;
-    margin-bottom: 32px;
-    width: 360px;
-  }
+  border-radius: 0.25rem;  
 
   form {
     display: flex;
