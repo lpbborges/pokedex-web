@@ -42,6 +42,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 
     return {} as AuthState;
   });
+
   async function signIn({ username, password }: SignInCredentials) {
     const response = await api.post<{ token: string; user: User }>('sign-in', {
       username,

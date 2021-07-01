@@ -1,4 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+
 import { GlobalStyle } from './styles/global'
 import { Routes } from './routes';
 
@@ -10,6 +12,7 @@ export function App() {
       <AuthProvider>
         <GlobalStyle />
         <Routes />
+        <ToastContainer autoClose={3000} />
       </AuthProvider>
     </BrowserRouter>
   );

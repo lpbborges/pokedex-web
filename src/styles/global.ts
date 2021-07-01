@@ -1,9 +1,15 @@
 import { createGlobalStyle } from 'styled-components';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
+    --gray-400: #8f8f8f;
+    --gray-600: #636363;
     --gray-800: #313131;
     --gray-850: #212121;
+
+    --orange-400: #ed846d;
+    --orange-700: #e74a27;
 
     --white: #FFF;
     --white-50: #F2F2F2;
@@ -40,6 +46,11 @@ export const GlobalStyle = createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 
   .background-color-bug {
