@@ -3,6 +3,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
+    --gray-50: #f1f1f1;
+    --gray-100: #f2f2f2;
+    --gray-200: #d4d2d2;
     --gray-400: #8f8f8f;
     --gray-600: #636363;
     --gray-800: #313131;
@@ -12,7 +15,6 @@ export const GlobalStyle = createGlobalStyle`
     --orange-700: #e74a27;
 
     --white: #FFF;
-    --white-50: #F2F2F2;
   }
 
   * {
@@ -51,6 +53,10 @@ export const GlobalStyle = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  ol, ul {
+    list-style: none;
   }
 
   .background-color-bug {
