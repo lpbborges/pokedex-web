@@ -7,9 +7,10 @@ import { Container } from './styles';
 
 type IPokemonItemProps = {
   name: string;
+  onOpenPokemonDetailModal: (pokemon: IPokemon) => void;
 }
 
-export function PokemonItem({ name }: IPokemonItemProps) {
+export function PokemonItem({ name, onOpenPokemonDetailModal }: IPokemonItemProps) {
   const [pokemon, setPokemon] = useState({} as IPokemon);
 
   useEffect(() => {
@@ -31,7 +32,7 @@ export function PokemonItem({ name }: IPokemonItemProps) {
   }, [pokemon]);
 
   return (
-    <Container>
+    <Container onClick={() => onOpenPokemonDetailModal(formattedPokemon)}>
       <figure>
         <img
           src={formattedPokemon.image_url}

@@ -4,8 +4,17 @@ export const Container = styled.li`
   width: 200px;
   display: flex;
   flex-direction: column;
+
+  cursor: pointer;
+
   border: 1px solid var(--gray-50);
   border-radius: 0.25rem;
+
+  transition: border-color 0.2s;
+
+  &:hover {
+    border-color: var(--gray-200);
+  }
   
   figure {
     background: var(--gray-100);

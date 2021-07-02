@@ -72,6 +72,7 @@ export function Home() {
         placeholder="Informe o pokémon que deseja procurar"
         onChange={event => setSearch(event.target.value)}
       />
+
       <PokemonList pokemons={pokemons} />
       {search.length <= 2 && hasNext && (
         <button
