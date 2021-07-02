@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { useEffect, useState } from 'react';
+import { Header } from '../../components/Header';
 
 import { PokemonList } from '../../components/PokemonList';
 import { IPokemon } from '../../interfaces/IPokemon';
@@ -66,22 +67,24 @@ export function Home() {
     []
   );
 
-  return (
-    <Container>
-      <input
-        placeholder="Informe o pokémon que deseja procurar"
-        onChange={event => setSearch(event.target.value)}
-      />
+  const handleSearch = useCallback((text: string) => {
+    setSearch(text);
+  }, [])
 
-      <PokemonList pokemons={pokemons} />
-      {search.length <= 2 && hasNext && (
-        <button
-          type="button"
-          onClick={() => handleFetchMorePokemon(offsetApiParam)}
-        >
-          Carregar mais
-        </button>
-      )}
-    </Container>
+  return (
+    <>
+      <Header onSearch={handleSearch} />
+      <Container>
+        <PokemonList pokemons={pokemons} />
+        {search.length <= 2 && hasNext && (
+          <button
+            type="button"
+            onClick={() => handleFetchMorePokemon(offsetApiParam)}
+          >
+            Carregar mais
+          </button>
+        )}
+      </Container>
+    </>
   )
 }

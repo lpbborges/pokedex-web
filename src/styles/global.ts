@@ -3,6 +3,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
+    --blue-300: #6e7fab;
+
     --gray-50: #f1f1f1;
     --gray-100: #f2f2f2;
     --gray-200: #d4d2d2;

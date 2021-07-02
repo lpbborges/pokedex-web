@@ -19,7 +19,7 @@ export function PokemonDetailModal(
       ...pokemon,
       height: pokemon.height / 100,
       weight: pokemon.weight / 100,
-      abilities: pokemon.abilities.map(ability => capitalize(ability))
+      abilities: pokemon.abilities?.map(ability => capitalize(ability))
     }
   }, [pokemon]);
 
@@ -53,7 +53,7 @@ export function PokemonDetailModal(
             <strong>{formattedPokemon.name}</strong>
           </div>
           <ul>
-            {formattedPokemon.types.map(type => (
+            {formattedPokemon.types?.map(type => (
               <li key={type} >
                 <div className={`background-color-${type}`}>
                   {type}
@@ -77,7 +77,7 @@ export function PokemonDetailModal(
           </div>
           <h3>Habilidades</h3>
           <ul>
-            {formattedPokemon.abilities.map(ability => (
+            {formattedPokemon.abilities?.map(ability => (
               <li key={ability}>
                 <span>
                   {ability}

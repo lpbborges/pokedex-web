@@ -36,7 +36,7 @@ export function SignIn() {
         <img src={logoImg} alt="Pokémon" />
         <form onSubmit={handleSignIn}>
           <input
-            placeholder="Nome de usuário"
+            placeholder="Usuário"
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
