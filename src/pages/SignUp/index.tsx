@@ -19,6 +19,11 @@ export function SignUp() {
       return;
     }
 
+    if (password.length < 6) {
+      toast.error('Password deve conter no minímo 6 caracteres');
+      return;
+    }
+
     try {
       await api.post('users', { username, password });
 
