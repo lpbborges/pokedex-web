@@ -11,11 +11,11 @@ interface IPokemonListProps {
 
 export function PokemonList({ pokemons }: IPokemonListProps) {
   const [isPokemonDetailModalOpen, setIsPokemonDetailModalOpen] = useState(false);
-  const [choosenPokemon, setChoosenPokemon] = useState({} as IPokemon);
+  const [chosenPokemon, setChosenPokemon] = useState({} as IPokemon);
 
   function handleOpenPokemonDetailModal(pokemon: IPokemon) {
     setIsPokemonDetailModalOpen(true);
-    setChoosenPokemon(pokemon);
+    setChosenPokemon(pokemon);
   }
 
   function handleClosePokemonDetailModal() {
@@ -36,7 +36,7 @@ export function PokemonList({ pokemons }: IPokemonListProps) {
       <PokemonDetailModal
         isOpen={isPokemonDetailModalOpen}
         onRequestClose={handleClosePokemonDetailModal}
-        pokemon={choosenPokemon}
+        pokemon={chosenPokemon}
       />
     </Container>
   );
