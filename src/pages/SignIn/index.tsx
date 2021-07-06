@@ -21,9 +21,6 @@ export function SignIn() {
     try {
       await signIn({ username, password });
 
-      setUsername('');
-      setPassword('');
-
       push('home');
     } catch (err) {
       toast.error('Verifique suas credenciais e tente novamente');
