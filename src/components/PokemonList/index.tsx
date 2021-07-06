@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import { IPokemon } from '../../interfaces/IPokemon';
 import { PokemonDetailModal } from '../PokemonDetailModal';
@@ -13,14 +13,14 @@ export function PokemonList({ pokemons }: IPokemonListProps) {
   const [isPokemonDetailModalOpen, setIsPokemonDetailModalOpen] = useState(false);
   const [chosenPokemon, setChosenPokemon] = useState({} as IPokemon);
 
-  function handleOpenPokemonDetailModal(pokemon: IPokemon) {
+  const handleOpenPokemonDetailModal = useCallback((pokemon: IPokemon) => {
     setIsPokemonDetailModalOpen(true);
     setChosenPokemon(pokemon);
-  }
+  }, []);
 
-  function handleClosePokemonDetailModal() {
+  const handleClosePokemonDetailModal = useCallback(() => {
     setIsPokemonDetailModalOpen(false);
-  }
+  }, []);
 
   return (
     <Container>

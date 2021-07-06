@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, memo } from 'react';
 import Modal from 'react-modal';
 
 import closeImg from '../../assets/close.svg';
@@ -12,7 +12,7 @@ interface IPokemonDetailModalProps {
   pokemon: IPokemon;
 }
 
-export function PokemonDetailModal(
+function PokemonDetailModalComponent(
   { isOpen, onRequestClose, pokemon }: IPokemonDetailModalProps) {
   const formattedPokemon = useMemo(() => {
     return {
@@ -90,3 +90,5 @@ export function PokemonDetailModal(
     </Modal>
   )
 }
+
+export const PokemonDetailModal = memo(PokemonDetailModalComponent);
