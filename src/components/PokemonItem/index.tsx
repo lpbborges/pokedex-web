@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, memo } from 'react';
 
 import { IPokemon } from '../../interfaces/IPokemon';
 import { api } from '../../services/api';
@@ -10,7 +10,7 @@ type IPokemonItemProps = {
   onOpenPokemonDetailModal: (pokemon: IPokemon) => void;
 }
 
-export function PokemonItem({ name, onOpenPokemonDetailModal }: IPokemonItemProps) {
+function PokemonItemComponent({ name, onOpenPokemonDetailModal }: IPokemonItemProps) {
   const [pokemon, setPokemon] = useState({} as IPokemon);
 
   useEffect(() => {
@@ -48,3 +48,5 @@ export function PokemonItem({ name, onOpenPokemonDetailModal }: IPokemonItemProp
     </Container>
   );
 }
+
+export const PokemonItem = memo(PokemonItemComponent);

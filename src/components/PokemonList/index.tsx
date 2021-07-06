@@ -6,7 +6,7 @@ import { PokemonItem } from '../PokemonItem';
 import { Container } from './styles';
 
 interface IPokemonListProps {
-  pokemons: IPokemon[];
+  pokemons: Pick<IPokemon, 'name'>[];
 }
 
 export function PokemonList({ pokemons }: IPokemonListProps) {
@@ -27,7 +27,7 @@ export function PokemonList({ pokemons }: IPokemonListProps) {
       <ul>
         {pokemons.map(pokemon => (
           <PokemonItem
-            key={pokemon.id}
+            key={pokemon.name}
             name={pokemon.name}
             onOpenPokemonDetailModal={handleOpenPokemonDetailModal}
           />
