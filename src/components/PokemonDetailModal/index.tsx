@@ -91,4 +91,6 @@ function PokemonDetailModalComponent(
   )
 }
 
-export const PokemonDetailModal = memo(PokemonDetailModalComponent);
+const PokemonDetailModal = memo(PokemonDetailModalComponent);
+
+export default PokemonDetailModal;

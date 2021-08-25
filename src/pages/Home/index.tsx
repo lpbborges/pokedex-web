@@ -44,7 +44,6 @@ export function Home() {
         (pokemon: IPokemon) => pokemon.name.startsWith(search.toLowerCase())
       );
 
-
       setPokemons(filteredPokemons);
     }
 

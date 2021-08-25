@@ -1,13 +1,14 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, lazy, Suspense } from 'react';
 
 import { IPokemon } from '../../interfaces/IPokemon';
-import { PokemonDetailModal } from '../PokemonDetailModal';
 import { PokemonItem } from '../PokemonItem';
 import { Container } from './styles';
 
 interface IPokemonListProps {
   pokemons: Pick<IPokemon, 'name'>[];
 }
+
+const PokemonDetailModal = lazy(() => import("../PokemonDetailModal"));
 
 export function PokemonList({ pokemons }: IPokemonListProps) {
   const [isPokemonDetailModalOpen, setIsPokemonDetailModalOpen] = useState(false);
@@ -33,11 +34,13 @@ export function PokemonList({ pokemons }: IPokemonListProps) {
           />
         ))}
       </ul>
-      <PokemonDetailModal
-        isOpen={isPokemonDetailModalOpen}
-        onRequestClose={handleClosePokemonDetailModal}
-        pokemon={chosenPokemon}
-      />
+      <Suspense fallback={<div>loading...</div>}>
+        <PokemonDetailModal
+          isOpen={isPokemonDetailModalOpen}
+          onRequestClose={handleClosePokemonDetailModal}
+          pokemon={chosenPokemon}
+        />
+      </Suspense>
     </Container>
   );
 }
