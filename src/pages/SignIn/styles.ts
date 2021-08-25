@@ -23,7 +23,7 @@ export const Content = styled.div`
   form {
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;
 
     input {
       height: 3.5rem;
@@ -31,7 +31,7 @@ export const Content = styled.div`
       border-radius: 0.25rem;
 
       border: 1px solid var(--gray-400);
-      
+
       font-size: 1rem;
       font-weight: 400;
       padding: 0 1.5rem;
@@ -45,7 +45,7 @@ export const Content = styled.div`
       }
     }
 
-    button[type="submit"] {
+    button[type='submit'] {
       width: 100%;
       padding: 0 1.5rem;
       height: 3.5rem;

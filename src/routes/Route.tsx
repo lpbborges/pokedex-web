@@ -15,7 +15,7 @@ export function Route({
   isPrivate = false,
   component: Component,
   ...rest
-}: RouteProps) {
+}: RouteProps): JSX.Element {
   const { user } = useAuth();
 
   return (
@@ -35,4 +35,4 @@ export function Route({
       }}
     />
   );
-};
+}

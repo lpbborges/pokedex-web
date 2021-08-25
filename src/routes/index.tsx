@@ -1,14 +1,11 @@
-
 import { Switch } from 'react-router-dom';
 
-import { Route } from './Route';
-
+import { Home } from '../pages/Home';
 import { SignIn } from '../pages/SignIn';
 import { SignUp } from '../pages/SignUp';
-import { Home } from '../pages/Home';
+import { Route } from './Route';
 
-
-export function Routes() {
+export function Routes(): JSX.Element {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
@@ -16,5 +13,5 @@ export function Routes() {
 
       <Route path="/home" component={Home} isPrivate />
     </Switch>
-  )
+  );
 }

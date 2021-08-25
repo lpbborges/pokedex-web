@@ -1,18 +1,15 @@
-import { CgPokemon } from "react-icons/cg";
-import { useAuth } from "../../../hooks/auth";
+import { CgPokemon } from 'react-icons/cg';
 
-import { Container } from "./styles";
+import { useAuth } from '../../../hooks/auth';
+import { Container } from './styles';
 
-export function LogoutButton() {
+export function LogoutButton(): JSX.Element {
   const { signOut } = useAuth();
 
   return (
-    <Container
-      type="button"
-      onClick={() => signOut()}
-    >
+    <Container type="button" onClick={() => signOut()}>
       <CgPokemon color="#6e7fab" size={24} />
       Logout
     </Container>
-  )
+  );
 }

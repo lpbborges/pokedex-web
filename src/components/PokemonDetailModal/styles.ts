@@ -9,7 +9,7 @@ export const Container = styled.div`
 
       img {
         width: 240px;
-        background: transparent;      
+        background: transparent;
       }
     }
 
@@ -64,27 +64,25 @@ export const Container = styled.div`
       & + div {
         margin-top: 1rem;
       }
-    }    
+    }
 
     h3 {
-    margin-top: 1rem;
-  }
+      margin-top: 1rem;
+    }
 
-  ul {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 1rem;
+    ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 1rem;
 
-    li {
-      margin-top: 0.5rem;
-      
-      span {
-        font-size: 1.1rem;
-        color: var(--gray-400);
+      li {
+        margin-top: 0.5rem;
+
+        span {
+          font-size: 1.1rem;
+          color: var(--gray-400);
+        }
       }
     }
   }
-  }
-
-  
 `;

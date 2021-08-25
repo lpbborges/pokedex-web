@@ -13,12 +13,12 @@ export const Content = styled.div`
   background: var(--white);
   width: 435px;
   padding: 3rem 2.5rem;
-  border-radius: 0.25rem;  
+  border-radius: 0.25rem;
 
   form {
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;
 
     input {
       height: 3.5rem;
@@ -26,7 +26,7 @@ export const Content = styled.div`
       border-radius: 0.25rem;
 
       border: 1px solid var(--gray-400);
-      
+
       font-size: 1rem;
       font-weight: 400;
       padding: 0 1.5rem;
@@ -40,12 +40,12 @@ export const Content = styled.div`
       }
     }
 
-    button[type="submit"] {
+    button[type='submit'] {
       width: 100%;
       padding: 0 1.5rem;
       height: 3.5rem;
       background: var(--orange-400);
-      color: #FFF;
+      color: #fff;
       border-radius: 0.25rem;
       border: 0;
       font-size: 1rem;

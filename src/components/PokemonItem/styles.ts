@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.li`
   width: 200px;
@@ -15,7 +15,7 @@ export const Container = styled.li`
   &:hover {
     border-color: var(--gray-200);
   }
-  
+
   figure {
     background: var(--gray-100);
 

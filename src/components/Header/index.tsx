@@ -6,8 +6,7 @@ interface IHeaderProps {
   onSearch: (text: string) => void;
 }
 
-export function Header({ onSearch }: IHeaderProps) {
-
+export function Header({ onSearch }: IHeaderProps): JSX.Element {
   return (
     <Container>
       <Content>
@@ -15,5 +14,5 @@ export function Header({ onSearch }: IHeaderProps) {
         <LogoutButton />
       </Content>
     </Container>
-  )
+  );
 }

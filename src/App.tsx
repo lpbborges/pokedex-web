@@ -1,16 +1,14 @@
+import Modal from 'react-modal';
 import { BrowserRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Modal from 'react-modal';
-
-import { GlobalStyle } from './styles/global'
-import { Routes } from './routes';
 
 import { AuthProvider } from './hooks/auth';
+import { Routes } from './routes';
+import { GlobalStyle } from './styles/global';
 
 Modal.setAppElement('#root');
 
-export function App() {
-
+export function App(): JSX.Element {
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -21,4 +19,3 @@ export function App() {
     </BrowserRouter>
   );
 }
-

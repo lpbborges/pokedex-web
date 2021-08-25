@@ -8,10 +8,11 @@ interface IPokemonListProps {
   pokemons: Pick<IPokemon, 'name'>[];
 }
 
-const PokemonDetailModal = lazy(() => import("../PokemonDetailModal"));
+const PokemonDetailModal = lazy(() => import('../PokemonDetailModal'));
 
-export function PokemonList({ pokemons }: IPokemonListProps) {
-  const [isPokemonDetailModalOpen, setIsPokemonDetailModalOpen] = useState(false);
+export function PokemonList({ pokemons }: IPokemonListProps): JSX.Element {
+  const [isPokemonDetailModalOpen, setIsPokemonDetailModalOpen] =
+    useState(false);
   const [chosenPokemon, setChosenPokemon] = useState({} as IPokemon);
 
   const handleOpenPokemonDetailModal = useCallback((pokemon: IPokemon) => {

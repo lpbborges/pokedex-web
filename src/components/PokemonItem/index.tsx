@@ -8,22 +8,25 @@ import { Container } from './styles';
 type IPokemonItemProps = {
   name: string;
   onOpenPokemonDetailModal: (pokemon: IPokemon) => void;
-}
+};
 
-function PokemonItemComponent({ name, onOpenPokemonDetailModal }: IPokemonItemProps) {
+function PokemonItemComponent({
+  name,
+  onOpenPokemonDetailModal,
+}: IPokemonItemProps): JSX.Element {
   const [pokemon, setPokemon] = useState({} as IPokemon);
 
   useEffect(() => {
-    async function findPokemonByName() {
+    async function findPokemonByName(): Promise<void> {
       const { data } = await api.get<IPokemon>(`pokemon/${name}`);
 
-      const pokemon = {
+      const pokemonData = {
         ...data,
-          id: data.id.toString().padStart(3, "0"),
+        id: data.id.toString().padStart(3, '0'),
         name: capitalize(data.name),
       };
 
-      setPokemon(pokemon);
+      setPokemon(pokemonData);
     }
 
     findPokemonByName();
@@ -32,15 +35,10 @@ function PokemonItemComponent({ name, onOpenPokemonDetailModal }: IPokemonItemPr
   return (
     <Container onClick={() => onOpenPokemonDetailModal(pokemon)}>
       <figure>
-        <img
-          src={pokemon.image_url}
-          alt={pokemon.name}
-        />
+        <img src={pokemon.image_url} alt={pokemon.name} />
       </figure>
       <div>
-        <span>
-          #{pokemon.id}
-        </span>
+        <span>#{pokemon.id}</span>
         <strong>{pokemon.name}</strong>
       </div>
     </Container>

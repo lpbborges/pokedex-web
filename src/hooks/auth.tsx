@@ -29,7 +29,7 @@ interface AuthProviderProps {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-function AuthProvider({ children }: AuthProviderProps) {
+function AuthProvider({ children }: AuthProviderProps): JSX.Element {
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@Pokemon:token');
     const user = localStorage.getItem('@Pokemon:user');
@@ -43,7 +43,10 @@ function AuthProvider({ children }: AuthProviderProps) {
     return {} as AuthState;
   });
 
-  async function signIn({ username, password }: SignInCredentials) {
+  async function signIn({
+    username,
+    password,
+  }: SignInCredentials): Promise<void> {
     const response = await api.post<{ token: string; user: User }>('sign-in', {
       username,
       password,
@@ -57,23 +60,21 @@ function AuthProvider({ children }: AuthProviderProps) {
     api.defaults.headers.authorization = `Bearer ${token}`;
 
     setData({ token, user });
-  };
+  }
 
-  function signOut() {
+  function signOut(): void {
     localStorage.removeItem('@Pokemon:token');
     localStorage.removeItem('@Pokemon:user');
 
     setData({} as AuthState);
-  };
+  }
 
   return (
-    <AuthContext.Provider
-      value={{ user: data.user, signIn, signOut }}
-    >
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
 function useAuth(): AuthContextData {
   const context = useContext(AuthContext);

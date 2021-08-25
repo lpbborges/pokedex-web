@@ -74,7 +74,7 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     justify-content: center;
   }
-  
+
   .react-modal-content {
     width: 100%;
     max-width: 576px;

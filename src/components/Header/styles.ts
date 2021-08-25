@@ -5,9 +5,9 @@ export const Container = styled.header`
   background: var(--white);
   width: 100%;
 
-  -webkit-box-shadow: 0 2px 3px 2px var(--gray-200);  
-  -moz-box-shadow:    0 2px 3px 2px var(--gray-200);  
-  box-shadow:         0 2px 3px 2px var(--gray-200);
+  -webkit-box-shadow: 0 2px 3px 2px var(--gray-200);
+  -moz-box-shadow: 0 2px 3px 2px var(--gray-200);
+  box-shadow: 0 2px 3px 2px var(--gray-200);
 `;
 
 export const Content = styled.div`

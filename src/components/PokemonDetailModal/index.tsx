@@ -12,17 +12,19 @@ interface IPokemonDetailModalProps {
   pokemon: IPokemon;
 }
 
-function PokemonDetailModalComponent(
-  { isOpen, onRequestClose, pokemon }: IPokemonDetailModalProps) {
+function PokemonDetailModalComponent({
+  isOpen,
+  onRequestClose,
+  pokemon,
+}: IPokemonDetailModalProps): JSX.Element {
   const formattedPokemon = useMemo(() => {
     return {
       ...pokemon,
       height: pokemon.height / 100,
       weight: pokemon.weight / 100,
-      abilities: pokemon.abilities?.map(ability => capitalize(ability))
-    }
+      abilities: pokemon.abilities?.map(ability => capitalize(ability)),
+    };
   }, [pokemon]);
-
 
   return (
     <Modal
@@ -41,23 +43,16 @@ function PokemonDetailModalComponent(
       <Container>
         <section className="pokemon-info">
           <figure>
-            <img
-              src={formattedPokemon.image_url}
-              alt={formattedPokemon.name}
-            />
+            <img src={formattedPokemon.image_url} alt={formattedPokemon.name} />
           </figure>
           <div>
-            <span>
-              #{formattedPokemon.id}
-            </span>
+            <span>#{formattedPokemon.id}</span>
             <strong>{formattedPokemon.name}</strong>
           </div>
           <ul>
             {formattedPokemon.types?.map(type => (
-              <li key={type} >
-                <div className={`background-color-${type}`}>
-                  {type}
-                </div>
+              <li key={type}>
+                <div className={`background-color-${type}`}>{type}</div>
               </li>
             ))}
           </ul>
@@ -65,30 +60,24 @@ function PokemonDetailModalComponent(
         <section className="complementary-info">
           <div>
             <strong>Altura: </strong>
-            <span>
-              {formattedPokemon.height} m
-            </span>
+            <span>{formattedPokemon.height} m</span>
           </div>
           <div>
             <strong>Peso: </strong>
-            <span>
-              {formattedPokemon.weight} kg
-            </span>
+            <span>{formattedPokemon.weight} kg</span>
           </div>
           <h3>Habilidades</h3>
           <ul>
             {formattedPokemon.abilities?.map(ability => (
               <li key={ability}>
-                <span>
-                  {ability}
-                </span>
+                <span>{ability}</span>
               </li>
             ))}
           </ul>
         </section>
       </Container>
     </Modal>
-  )
+  );
 }
 
 const PokemonDetailModal = memo(PokemonDetailModalComponent);
