@@ -1,6 +1,5 @@
-import { CgPokemon } from 'react-icons/cg';
-
-import { useAuth } from '../../hooks/auth';
+import { LogoutButton } from './LogoutButton';
+import { Search } from './Search';
 import { Container, Content } from './styles';
 
 interface IHeaderProps {
@@ -8,22 +7,12 @@ interface IHeaderProps {
 }
 
 export function Header({ onSearch }: IHeaderProps) {
-  const { signOut } = useAuth();
 
   return (
     <Container>
       <Content>
-        <input
-          placeholder="Informe o pokémon que deseja procurar"
-          onChange={event => onSearch(event.target.value)}
-        />
-        <button
-          type="button"
-          onClick={() => signOut()}
-        >
-          <CgPokemon color="#6e7fab" size={24} />
-          Logout
-        </button>
+        <Search onSearch={onSearch} />
+        <LogoutButton />
       </Content>
     </Container>
   )
