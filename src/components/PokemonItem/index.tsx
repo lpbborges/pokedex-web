@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, memo } from 'react';
+import { useState, useEffect, memo } from 'react';
 
 import { IPokemon } from '../../interfaces/IPokemon';
 import { api } from '../../services/api';
@@ -17,33 +17,31 @@ function PokemonItemComponent({ name, onOpenPokemonDetailModal }: IPokemonItemPr
     async function findPokemonByName() {
       const { data } = await api.get<IPokemon>(`pokemon/${name}`);
 
-      setPokemon(data);
+      const pokemon = {
+        ...data,
+          id: data.id.toString().padStart(3, "0"),
+        name: capitalize(data.name),
+      };
+
+      setPokemon(pokemon);
     }
 
     findPokemonByName();
   }, [name]);
 
-  const formattedPokemon = useMemo(() => {
-    return {
-      ...pokemon,
-      id: pokemon.id ? pokemon.id.toString().padStart(3, "0") : '',
-      name: pokemon.name ? capitalize(pokemon.name) : '',
-    }
-  }, [pokemon]);
-
   return (
-    <Container onClick={() => onOpenPokemonDetailModal(formattedPokemon)}>
+    <Container onClick={() => onOpenPokemonDetailModal(pokemon)}>
       <figure>
         <img
-          src={formattedPokemon.image_url}
-          alt={formattedPokemon.name}
+          src={pokemon.image_url}
+          alt={pokemon.name}
         />
       </figure>
       <div>
         <span>
-          #{formattedPokemon.id}
+          #{pokemon.id}
         </span>
-        <strong>{formattedPokemon.name}</strong>
+        <strong>{pokemon.name}</strong>
       </div>
     </Container>
   );
